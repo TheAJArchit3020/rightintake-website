@@ -1,0 +1,58 @@
+.nav_component_container {
+  padding: 20px 30px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 15%);
+}
+
+.nav_component_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.brand_logo_wrapper {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.brand_logo_wrapper img{
+  width: 100%;
+}
+
+@media (min-width: 750px) {
+  .nav_component_container {
+    padding: 20px 60px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 15%);
+  }
+
+  .nav_component_wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1910px) {
+  .nav_component_container {
+    padding: 20px 80px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 15%);
+  }
+
+  .nav_component_wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 2540px) {
+  .nav_component_container {
+    padding: 40px 100px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 15%);
+  }
+
+  .nav_component_wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}
