@@ -1,0 +1,13 @@
+.home_page_container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  overflow: hidden;
+  align-items: center;
+}
+.home_page_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100vw;
+}

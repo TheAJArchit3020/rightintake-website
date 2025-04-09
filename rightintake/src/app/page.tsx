@@ -9,9 +9,14 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <HeaderComponent />
-      <MainSection />
-      <FeatureSection />
-      <ReviewSection />
+      <div className={`${styles.home_page_container}`}>
+        <div className={`${styles.home_page_wrapper}`}>
+          <MainSection />
+          <FeatureSection />
+          <ReviewSection />
+        </div>
+      </div>
+
     </div>
   );
 }
