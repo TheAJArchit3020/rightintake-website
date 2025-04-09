@@ -1,0 +1,317 @@
+.features_section_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.features_section_wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.features_section_heading {
+    font-size: 0.625rem;
+    font-weight: 800;
+    font-style: italic;
+    color: #315372;
+    text-align: center;
+}
+.nutri_plans_wrapper {
+    display: flex;
+    padding: 0 30px;
+    gap: 42px;
+    align-items: center;
+}
+.nutri_plans_image {
+    width: 100%;
+}
+.nutri_plans_image img {
+    width: 100%;
+}
+.nutri_plans_message_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.message_head {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #093258e1;
+}
+.message_para {
+    font-size: 0.625rem;
+    font-weight: 300;
+    color: #686868;
+}
+.schedule_call_wrapper {
+    display: flex;
+    padding: 0 30px;
+    gap: 42px;
+    align-items: center;
+}
+
+.schedule_call_message {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.schedule_call_image {
+    width: 100%;
+}
+
+.schedule_call_image img {
+    width: 100%;
+}
+
+.best_part_wrapper {
+    display: flex;
+    padding: 0 35px;
+}
+.best_part_message {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.best_part_image img {
+    width: 100%;
+    margin: 20px -10px;
+}
+.tracking_section_heading {
+    font-size: 0.625rem;
+    font-weight: 800;
+    font-style: italic;
+    color: #315372;
+    text-align: center;
+    padding: 0 20px;
+}
+.tracking_wrapper {
+    display: flex;
+    padding: 0 35px;
+    gap: 40px;
+    align-items: center;
+}
+.tracking_image_wrapper {
+    width: 120%;
+}
+.tracking_image_wrapper img {
+    width: 100%;
+}
+
+@media (max-width: 350px) {
+    .features_section_wrapper {
+        gap: 30px;
+    }
+    .features_section_heading {
+        font-size: 0.525rem;
+    }
+    .nutri_plans_wrapper {
+        padding: 0 50px;
+    }
+
+    .message_head {
+        font-size: 0.775rem;
+    }
+    .message_para {
+        font-size: 0.425rem;
+    }
+    .schedule_call_wrapper {
+        padding: 0 30px;
+    }
+
+    .best_part_wrapper {
+        display: flex;
+        padding: 0 30px;
+    }
+
+    .best_part_image img {
+        margin: 20px -10px;
+    }
+    .tracking_section_heading {
+        font-size: 0.525rem;
+        padding: 0 30px;
+    }
+    .tracking_wrapper {
+        padding: 0 30px;
+    }
+}
+@media (min-width: 750px) {
+    .features_section_wrapper {
+        gap: 80px;
+    }
+    .features_section_heading {
+        font-size: 1rem;
+    }
+    .nutri_plans_wrapper {
+        padding: 0 50px;
+    }
+
+    .message_head {
+        font-size: 1.5rem;
+    }
+    .message_para {
+        font-size: 1rem;
+    }
+    .schedule_call_wrapper {
+        padding: 0 50px;
+    }
+
+    .best_part_wrapper {
+        display: flex;
+        padding: 0 50px;
+    }
+
+    .best_part_image img {
+        margin: 20px -10px;
+    }
+    .tracking_section_heading {
+        font-size: 1rem;
+        padding: 0 50px;
+    }
+    .tracking_wrapper {
+        padding: 0 50px;
+    }
+}
+
+@media (min-width: 1020px) {
+    .features_section_wrapper {
+        gap: 100px;
+    }
+    .features_section_heading {
+        font-size: 1rem;
+    }
+
+    .nutri_plans_wrapper {
+        padding: 0 120px;
+    }
+
+    .schedule_call_wrapper {
+        padding: 0 150px;
+    }
+
+    .best_part_wrapper {
+        padding: 0 100px;
+    }
+
+    .best_part_image img {
+        margin: 20px -10px;
+    }
+    .tracking_section_heading {
+        font-size: 1rem;
+        padding: 0 180px;
+    }
+    .tracking_wrapper {
+        padding: 0 120px;
+    }
+}
+
+@media (min-width: 1430px) {
+    .features_section_wrapper {
+        gap: 100px;
+    }
+    .features_section_heading {
+        font-size: 1.2rem;
+    }
+    .message_head {
+        font-size: 1.8rem;
+    }
+    .message_para {
+        font-size: 1.2rem;
+    }
+    .nutri_plans_wrapper {
+        padding: 0 320px;
+    }
+
+    .schedule_call_wrapper {
+        padding: 0 350px;
+    }
+
+    .best_part_wrapper {
+        padding: 0 300px;
+    }
+
+    .best_part_image img {
+        margin: 20px -10px;
+    }
+    .tracking_section_heading {
+        font-size: 1.2rem;
+        padding: 0 320px;
+    }
+    .tracking_wrapper {
+        padding: 0 320px;
+    }
+}
+
+@media (min-width: 1910px) {
+    .features_section_wrapper {
+        gap: 100px;
+    }
+    .features_section_heading {
+        font-size: 1.4rem;
+    }
+    .message_head {
+        font-size: 2rem;
+    }
+    .message_para {
+        font-size: 1.4rem;
+    }
+    .nutri_plans_wrapper {
+        padding: 0 520px;
+    }
+
+    .schedule_call_wrapper {
+        padding: 0 550px;
+    }
+
+    .best_part_wrapper {
+        padding: 0 500px;
+    }
+
+    .best_part_image img {
+        margin: 20px -10px;
+    }
+    .tracking_section_heading {
+        font-size: 2rem;
+        padding: 0 300px;
+    }
+    .tracking_wrapper {
+        padding: 0 520px;
+    }
+}
+
+@media (min-width: 2550px) {
+    .features_section_wrapper {
+        gap: 100px;
+    }
+    .features_section_heading {
+        font-size: 1.8rem;
+    }
+    .message_head {
+        font-size: 2.4rem;
+    }
+    .message_para {
+        font-size: 1.8rem;
+    }
+    .nutri_plans_wrapper {
+        padding: 0 620px;
+    }
+
+    .schedule_call_wrapper {
+        padding: 0 650px;
+    }
+
+    .best_part_wrapper {
+        padding: 0 600px;
+    }
+
+    .best_part_image img {
+        margin: 20px -10px;
+    }
+    .tracking_section_heading {
+        font-size: 2.4rem;
+        padding: 0 600px;
+    }
+    .tracking_wrapper {
+        padding: 0 620px;
+    }
+}
