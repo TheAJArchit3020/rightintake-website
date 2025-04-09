@@ -1,87 +1,92 @@
-
-"use client"
-
-import React, { useState, useEffect } from "react";
-import { usePathname } from "next/navigation"; // Use usePathname from next/navigation
 import { baseurl } from "@/app/Data/Api";
-import HeaderComponent from "@/components/header/header";
-import Footer from "@/components/footer/footer";
-import styles from "../../../components/css/blogs.module.css";
+import { notFound } from "next/navigation";
 
-interface Blog {
-    title: string;
-    date: string;
-    banner: string;
-    content: { heading: string; paragraph: string; image?: string; imageAlt?: string }[];
-    cta?: { link: string; text: string };
+import BlogPageComponent from "@/components/blogdetails/BlogDetailsComponent";
+
+// Step 1: Generate the static params (get all blog slugs for static generation)
+export async function generateStaticParams() {
+    try {
+        const res = await fetch(`${baseurl}/blogs`); // Fetch all slugs
+        if (!res.ok) {
+            console.error("Failed to fetch blog slugs");
+            return []; // Return empty array if the fetch fails
+        }
+        const blogs = await res.json();
+        return blogs.map((blog: any) => ({ slug: blog.slug })); // Map to generate params
+    } catch (error) {
+        console.error("Error fetching blog slugs:", error);
+        return [];
+    }
 }
 
-const BlogDetailPage: React.FC = () => {
-    const [blog, setBlog] = useState<Blog | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const pathname = usePathname(); // Get the pathname of the current URL
-
-    const slug = pathname?.split("/").pop(); // Extract the slug from the URL path
-
-    useEffect(() => {
-        if (slug) {
-            fetch(`${baseurl}/blogs/get-all-blogs/${slug}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    setBlog(data);
-                    setLoading(false);
-                })
-                .catch((err) => {
-                    console.error("Error loading blog:", err);
-                    setLoading(false);
-                });
+// Step 2: Generate metadata (SEO, Open Graph, etc.)
+export async function generateMetadata({
+    params,
+}: {
+    params: { slug: string };
+}) {
+    const { slug } = await params;
+    try {
+        const res = await fetch(`${baseurl}/blogs/get-all-blogs/${slug}`);
+        if (!res.ok) {
+            console.error("Failed to fetch blog metadata");
+            return {};
         }
-    }, [slug]);
 
-    if (loading) return <div>Loading...</div>;
-    if (!blog) return <div>Blog not found.</div>;
+        const blog = await res.json();
 
-    return (
-        <>
-            <HeaderComponent />
-            <div className={`${styles.blog_detail}`}>
-                <img className={`${styles.blog_banner}`} src={blog.banner} alt={blog.title} />
-                <div className={`${styles.blog_content_container}`}>
-                    <div className={`${styles.blog_body}`}>
-                        <div className={`${styles.blog_header}`}>
-                            <h1>{blog.title}</h1>
-                            <p className={`${styles.blog_date}`}>{blog.date}</p>
-                        </div>
+        if (!blog) return {};
 
-                        {blog.content.map((section, index) => (
-                            <div key={index} className={`${styles.blog_section}`}>
-                                {section.heading && <h2>{section.heading}</h2>}
-                                {section.paragraph && (
-                                    <p dangerouslySetInnerHTML={{ __html: section.paragraph }}></p>
-                                )}
-                                {section.image && (
-                                    <img
-                                        src={section.image}
-                                        alt={section.imageAlt || ""}
-                                        className={`${styles.blog_image}`}
-                                    />
-                                )}
-                            </div>
-                        ))}
+        return {
+            title: blog.meta?.ogTitle || blog.title,
+            description: blog.meta?.ogDescription || blog.preview,
+            keywords: blog.tags,
+            openGraph: {
+                title: blog.meta?.ogTitle || blog.title,
+                description: blog.meta?.ogDescription || blog.preview,
+                images: [
+                    {
+                        url: blog.meta?.ogImage || blog.banner,
+                        width: 1200,
+                        height: 630,
+                    },
+                ],
+                type: blog.meta?.ogType || "article",
+            },
+        };
+    } catch (error) {
+        console.error("Error generating metadata:", error);
+        return {};
+    }
+}
 
-                        {blog.cta && (
-                            <div className={`${styles.blog_cta_btn}`}>
-                                <a href={blog.cta.link} className={`${styles.blog_cta_a}`}>
-                                    {blog.cta.text}
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </div>
-            <Footer />
-        </>
-    );
-};
+export default async function BlogPage({
+    params,
+}: {
+    params: { slug: string };
+}) {
+    const { slug } = await params;
+    try {
+        const res = await fetch(`${baseurl}/blogs/get-all-blogs/${slug}`);
+        if (!res.ok) {
+            console.error("Blog not found, returning 404");
+            return notFound(); // If not found, return 404 page
+        }
 
-export default BlogDetailPage;
+        const blog = await res.json(); // Parse the fetched blog data
+
+        // Ensure the blog data exists
+        if (!blog) {
+            console.error("Blog data is empty or not found");
+            return notFound();
+        }
+
+        return (
+            <BlogPageComponent blog={blog} />
+
+        );
+    } catch (error) {
+        console.error("Error fetching blog data:", error);
+        return notFound();
+    }
+}
