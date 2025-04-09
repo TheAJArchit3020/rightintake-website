@@ -3,7 +3,6 @@
 import React from 'react'
 import styles from './header.module.css'
 import { useRouter } from "next/navigation";
-import RootLayout from '@/app/layout';
 
 const HeaderComponent: React.FC = () => {
 
@@ -19,6 +18,6 @@ const HeaderComponent: React.FC = () => {
             </div>
         </div>
     )
-}
+} 
 
 export default HeaderComponent
