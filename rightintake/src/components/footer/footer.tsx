@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div
                     className={`${styles.t_and_c_container}`}
-                    onClick={() => router.push("/termsandservices")}
+                    onClick={() => router.push("/TermsandServices")}
                 >
                     <span>Terms and services</span>
                 </div>
