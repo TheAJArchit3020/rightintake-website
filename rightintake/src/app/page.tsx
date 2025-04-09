@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import HeaderComponent from "@/components/header/header";
 import FeatureSection from "@/components/home/FeatureSection/FeatureSection";
 import ReviewSection from "@/components/home/ReviewSection/ReviewSection";
+import Footer from "@/components/footer/footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
           <ReviewSection />
         </div>
       </div>
+      <Footer/>
 
     </div>
   );
