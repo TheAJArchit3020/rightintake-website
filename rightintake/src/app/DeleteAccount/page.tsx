@@ -37,7 +37,7 @@ const DeleteAccount: React.FC = () => {
         console.log('Form submitted', formData);
 
         try {
-            const response = await fetch(`${baseurl}/user/delete`, {
+            const response = await fetch(`${baseurl}/app/user/delete`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
