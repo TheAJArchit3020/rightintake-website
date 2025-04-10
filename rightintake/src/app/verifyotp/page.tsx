@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
-import realintakeslogo from './images/header/rightintakelogo_website.png';
 import styles from "@/components/css/forgotpassword.module.css"
 import { baseurl } from '../Data/Api';
 
@@ -19,14 +18,18 @@ const VerifyOtp: React.FC = () => {
     const [timer, setTimer] = useState<number>(30);
     const [canResend, setCanResend] = useState<boolean>(false);
     const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
+    const searchParams = useSearchParams();
+
 
     // Simulate getting email from URL state
+
+
     useEffect(() => {
-        const storedEmail = sessionStorage.getItem('reset_email');
+        const storedEmail = searchParams.get('email');
         if (storedEmail) {
             setEmail(storedEmail);
         } else {
-            router.push('/forgot-password');
+            router.push('/forgotpassword');
         }
     }, [router]);
 
@@ -115,24 +118,25 @@ const VerifyOtp: React.FC = () => {
 
     return (
         <div className={`${styles.forgotpassword_container}`}>
-            <div className={`${styles.forgotpassword_header}`}>
-                <div className={`${styles.forgotpassword_header_wrapper}`}>
-                    <Image src={realintakeslogo} alt="realintakeslogo" width={50} />
-                    <h4 className={`${styles.ms_2}`}>Right Intake</h4>
+            <div className={styles.forgotpassword_header}>
+                <div className={styles.forgotpassword_header_wrapper}>
+                    <img src="./images/header/rightintakelogo_website.png" alt="realintakeslogo" width={50} />
+                    <h4 className="ms-2">Right Intake</h4>
                 </div>
             </div>
-
             <div className={`${styles.forgotpassword_wrapper}`}>
-                <div className={`${styles.forgotpassword_wrapper_content}`}>
+                <div className={`${styles.verifypassword_wrapper_content}`}>
                     <span className={`${styles.forgotpassword_content_note}`}>
-                        Enter the OTP sent to your registered mail ID to reset your password.
+                        Enter the OTP sent to your registered mail id  to reset your password.
                     </span>
 
                     <div className={`${styles.verify_otp_inputs}`}>
                         {otp.map((digit, index) => (
                             <input
                                 key={index}
-                                ref={(el) => (inputRefs.current[index] = el)}
+                                ref={(el) => {
+                                    inputRefs.current[index] = el;
+                                }}
                                 type="text"
                                 value={digit}
                                 maxLength={1}
@@ -143,15 +147,13 @@ const VerifyOtp: React.FC = () => {
                         ))}
                     </div>
 
-                    <div className={`${styles.resend_otp_container}`}>
-                        {canResend ? (
-                            <span className={`${styles.resend_otp}`} onClick={handleResendOtp}>
-                                Resend OTP
-                            </span>
-                        ) : (
-                            <span className={`${styles.resend_otp}`}>Resend OTP in: {timer} sec</span>
-                        )}
-                    </div>
+                    {canResend ? (
+                        <span className={`${styles.resend_otp}`} onClick={handleResendOtp}>
+                            Resend OTP
+                        </span>
+                    ) : (
+                        <span className={`${styles.resend_otp}`}>Resend OTP in: {timer} sec</span>
+                    )}
                 </div>
 
                 <div className={`${styles.forgotpassword_button_container}`} onClick={handleSubmit}>

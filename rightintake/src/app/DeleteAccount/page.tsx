@@ -4,8 +4,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { baseurl } from '../Data/Api';
 import Link from 'next/link';
 import styles from "../../components/css/deleteaccount.module.css"
-import eyeopen from "./images/deleteaccount/eyes.svg"
-import eyeclose from "./images/deleteaccount/crossedeyes.svg"
+
 
 
 interface FormData {
