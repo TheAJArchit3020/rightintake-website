@@ -7,9 +7,6 @@ import { useSearchParams } from 'next/navigation';
 import styles from "@/components/css/forgotpassword.module.css"
 import { baseurl } from '../Data/Api';
 
-interface LocationState {
-    email?: string;
-}
 
 const VerifyOtp: React.FC = () => {
     const router = useRouter();
@@ -22,8 +19,6 @@ const VerifyOtp: React.FC = () => {
 
 
     // Simulate getting email from URL state
-
-
     useEffect(() => {
         const storedEmail = searchParams.get('email');
         if (storedEmail) {
