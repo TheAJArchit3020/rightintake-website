@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Right Intake – Personalized Nutrition Plans & Expert Guidance",
+  title: "Right Intake – Personalized Nutrition Plans & Calorie Tracker",
   description:
-    "Right Intake helps you discover customized nutrition plans from certified experts. Whether you're focused on fitness, managing PCOS, or improving health, find your ideal diet strategy and connect with top nutritionists.",
+    "Right Intake helps you discover customized nutrition plans from certified experts. Whether you're focused on fitness, managing PCOS, or improving health, find your ideal diet strategy and connect with top nutritionists and track calories progress with ease on Right Intake..",
   icons: {
     icon: "/images/header/rightintakelogo_website.png",
   },
