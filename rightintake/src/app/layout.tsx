@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "Caorie Counter",
   ],
   openGraph: {
-    title: "Right Intake – Personalized Nutrition Plans & Expert Guidance",
+    title: "Right Intake – Personalized Nutrition Plans & Calorie Tracker",
     description:
       "Explore customized nutrition plans crafted by certified nutritionists. Schedule calls and track calories progress with ease on Right Intake.",
     url: "https://rightintake.com",
