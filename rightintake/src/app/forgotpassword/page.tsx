@@ -57,7 +57,9 @@ const ForgotPassword: React.FC = () => {
 
       const data = await response.json();
 
-      if (response.ok && data?.status) {
+      console.log("forgot pass data", data)
+
+      if (response.ok) {
         setMessage("OTP sent successfully! Check your email.");
         setTimeout(() => {
           router.push(`/verifyotp?email=${encodeURIComponent(formData.email)}`);

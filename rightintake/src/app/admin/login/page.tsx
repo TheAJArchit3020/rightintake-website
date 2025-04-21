@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { baseurl } from "@/app/Data/Api";
+import styles from "@/components/css/adminlogin.module.css"
 
 const AdminLogin = () => {
 
@@ -34,9 +35,9 @@ const AdminLogin = () => {
         }
     };
     return (
-        <div className="admin-login">
+        <div className={styles.admin_login_container}>
             <h1>Admin Login</h1>
-            <form onSubmit={handleLogin}>
+            <form className={styles.admin_login_form} onSubmit={handleLogin}>
                 <input
                     type="email"
                     placeholder="Email"
