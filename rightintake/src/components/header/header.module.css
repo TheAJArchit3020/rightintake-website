@@ -6,6 +6,7 @@
 .nav_component_wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .brand_logo_wrapper {
@@ -13,6 +14,45 @@
   height: 24px;
   cursor: pointer;
 }
+
+.nav_component_wrapper_content {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.brand_logo_name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.brand_app_button {
+  border: 0.5px solid #ADCDDD;
+  border-radius: 5px;
+  width: 4.813rem;
+  height: 1.313rem;
+  background: linear-gradient(90deg, #B9C7CE 0%, #D5E2E9 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.5s ease;
+}
+
+.brand_app_button:hover {
+
+  transition: 0.5s ease;
+  scale: 1.05;
+}
+
+.brand_app_button span {
+  color: #093258;
+  font-size: 0.625rem;
+  font-weight: 500;
+}
+
 .brand_logo_wrapper img {
   width: 100%;
 }
@@ -28,10 +68,21 @@
     display: flex;
     justify-content: space-between;
   }
+
   .brand_logo_wrapper {
     width: 40px;
     height: 40px;
     cursor: pointer;
+  }
+
+  .brand_app_button {
+    width: 120px;
+    padding: 0.5rem;
+  }
+
+  .brand_app_button span {
+    font-size: 1rem;
+    text-decoration: none;
   }
 }
 

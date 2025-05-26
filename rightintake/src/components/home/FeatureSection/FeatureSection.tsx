@@ -13,7 +13,7 @@ export default function FeatureSection() {
         <div className={`${styles.nutri_plans_wrapper}`}>
           <div className={`${styles.nutri_plans_image}`}>
             <img
-              src="/images/homepage/FeatureSection/NutriPlansImg.png"
+              src="/images/homepage/FeatureSection/snap_and_know.png"
               alt=""
             />
           </div>
@@ -21,30 +21,32 @@ export default function FeatureSection() {
             <div
               className={`${styles.nutri_plans_message_head} ${styles.message_head}`}
             >
-              <span>Explore Nutri-Plans</span>
+              <span>Snap & Know</span>
             </div>
             <div
               className={`${styles.nutri_plans_message_para} ${styles.message_para}`}
             >
               <span>
-                Browse expert-crafted affordable plans from top nutritionists.
+                Take a quick photo of your meal and instantly get detailed nutrition insights.
               </span>
             </div>
           </div>
         </div>
+
+
+
         <div className={`${styles.schedule_call_wrapper}`}>
           <div className={`${styles.schedule_call_message}`}>
             <div
               className={`${styles.schedule_call_message_head} ${styles.message_head}`}
             >
-              <span>Book a Call</span>
+              <span>Smart Food Scan</span>
             </div>
             <div
               className={`${styles.schedule_call_message_para} ${styles.message_para}`}
             >
-              <span>
-                Connect directly with the plan’s creator for personalized
-                guidance.
+              <span style={{ textAlign: 'center' }}>
+                Tap on any food photo to instantly view detailed nutritional facts and calorie counts.
               </span>
             </div>
           </div>
@@ -55,6 +57,56 @@ export default function FeatureSection() {
             />
           </div>
         </div>
+
+
+        <div className={`${styles.nutri_plans_wrapper}`}>
+          <div className={`${styles.nutri_plans_message_wrapper}`}>
+            <div
+              className={`${styles.nutri_plans_message_head} ${styles.message_head}`}
+            >
+              <span>Log Your Activity</span>
+            </div>
+            <div
+              className={`${styles.nutri_plans_message_para} ${styles.message_para}`}
+            >
+              <span>
+                Add your workouts or runs and get real-time calorie burn estimates based on your activity details.
+              </span>
+            </div>
+          </div>
+          <div className={`${styles.nutri_plans_image}`} style={{width: '70%'}} >
+            <img
+              src="/images/homepage/FeatureSection/exercises.png"
+              alt=""
+            />
+          </div>
+        </div>
+
+
+         <div className={`${styles.schedule_call_wrapper}`}>
+          <div className={`${styles.schedule_call_message}`}>
+            <div
+              className={`${styles.schedule_call_message_head} ${styles.message_head}`}
+            >
+              <span>Track Every Move, Every Day</span>
+            </div>
+            <div
+              className={`${styles.schedule_call_message_para} ${styles.message_para}`}
+            >
+              <span style={{ textAlign: 'center' }}>
+                Stay on top of your fitness with detailed logs for workouts, steps, and active minutes—all in one place.
+              </span>
+            </div>
+          </div>
+          <div className={`${styles.schedule_call_image}`}   style={{width: '70%'}} >
+            <img
+              src="/images/homepage/FeatureSection/everyday-move.png"
+              alt=""
+            />
+          </div>
+        </div>
+
+
         <div className={`${styles.best_part_wrapper}`}>
           <div className={`${styles.best_part_message}`}>
             <div

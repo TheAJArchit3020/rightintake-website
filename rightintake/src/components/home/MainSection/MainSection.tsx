@@ -27,19 +27,8 @@ export default function MainSection() {
         </div>
 
         <div className={`${styles.download_app_container}`}>
-          <div
-            className={`${styles.download_app_playstore} ${styles.store_wrapper}`}
-          >
-            <div className={`${styles.playstore_logo}`}>
-              <img src="/images/homepage/MainSection/playstore.png" alt="" />
-            </div>
-            <div
-              className={`${styles.playstore_name} ${styles.store_name_wrapper}`}
-            >
-              <span>Play Store</span>
-            </div>
-          </div>
-          <div
+
+          <a href="#" 
             className={`${styles.download_app_appstore} ${styles.store_wrapper}`}
           >
             <div className={`${styles.appstore_logo}`}>
@@ -48,9 +37,25 @@ export default function MainSection() {
             <div
               className={`${styles.appstore_name} ${styles.store_name_wrapper}`}
             >
-              <span>App Store</span>
+
+              <span>Download on the </span>
+              <span>App store</span>
             </div>
-          </div>
+          </a>
+
+          <a href="https://play.google.com/store/apps/details?id=com.kineticscapestudios.rightintake" target="_Blank" rel=""
+            className={`${styles.download_app_playstore} ${styles.store_wrapper}`}
+          >
+            <div className={`${styles.playstore_logo}`}>
+              <img src="/images/homepage/MainSection/playstore.png" alt="" />
+            </div>
+            <div
+              className={`${styles.playstore_name} ${styles.store_name_wrapper}`}
+            >
+              <span>Get it on </span>
+              <span>Google play</span>
+            </div>
+          </a>
         </div>
       </div>
     </div>
