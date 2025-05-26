@@ -27,8 +27,8 @@
 }
 
 .brand_app_button {
-  border: 0.5px solid #ADCDDD;
-  border-radius: 5px;
+  border: 1px solid #adcddd;
+  border-radius: 8px;
   width: 4.813rem;
   height: 1.313rem;
   background: linear-gradient(90deg, #B9C7CE 0%, #D5E2E9 100%);

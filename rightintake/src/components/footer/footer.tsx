@@ -27,6 +27,15 @@ export default function Footer() {
           <div className={`${styles.contact_us_email}`}>
             <span>contact@rightitnake.com</span>
           </div>
+
+          <a
+            href="https://play.google.com/store/apps/details?id=com.kineticscapestudios.rightintake"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.brand_app_button}
+          >
+            <span>Get the app</span>
+          </a>
         </div>
       </div>
     </div>

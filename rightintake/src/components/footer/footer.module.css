@@ -13,6 +13,33 @@
   margin: 0 20px;
 }
 
+.brand_app_button {
+  border: .5px solid #adcddd;
+  border-radius: 8px;
+  width: 77px;
+  height: 22px;
+  background: linear-gradient(90deg, #B9C7CE 0%, #D5E2E9 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.5s ease;
+}
+
+.brand_app_button:hover {
+
+  transition: 0.5s ease;
+  scale: 1.05;
+}
+
+.brand_app_button span {
+  color: #093258;
+  font-size: 0.725rem;
+  font-weight: 500;
+}
+
 .footer_brand_wrapper {
   text-decoration: none;
   display: flex;
