@@ -22,13 +22,15 @@ export default function MainSection() {
                 your health goals effortlessly by connecting with top
                 nutritionists near you.
               </span>
+              <br />
+              
             </div>
           </div>
         </div>
 
         <div className={`${styles.download_app_container}`}>
 
-          <a href="#" 
+          <a href="https://apps.apple.com/in/app/right-intake/id6738113419" 
             className={`${styles.download_app_appstore} ${styles.store_wrapper}`}
           >
             <div className={`${styles.appstore_logo}`}>
