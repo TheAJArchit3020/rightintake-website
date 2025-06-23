@@ -1,0 +1,13 @@
+.RichTextEditorWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  min-height: 250px;
+}
+
+.editorStyle {
+  border-radius: 20px;
+  border: 1px solid #696969;
+  min-height: 150px;
+  padding: 20px;
+}

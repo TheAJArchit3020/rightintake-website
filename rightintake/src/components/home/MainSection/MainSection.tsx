@@ -23,14 +23,13 @@ export default function MainSection() {
                 nutritionists near you.
               </span>
               <br />
-              
             </div>
           </div>
         </div>
 
         <div className={`${styles.download_app_container}`}>
-
-          <a href="https://apps.apple.com/in/app/right-intake/id6738113419" 
+          <a
+            href="https://apps.apple.com/in/app/right-intake/id6738113419"
             className={`${styles.download_app_appstore} ${styles.store_wrapper}`}
           >
             <div className={`${styles.appstore_logo}`}>
@@ -39,13 +38,15 @@ export default function MainSection() {
             <div
               className={`${styles.appstore_name} ${styles.store_name_wrapper}`}
             >
-
               <span>Download on the </span>
               <span>App store</span>
             </div>
           </a>
 
-          <a href="https://play.google.com/store/apps/details?id=com.kineticscapestudios.rightintake" target="_Blank" rel=""
+          <a
+            href="https://play.google.com/store/apps/details?id=com.kineticscapestudios.rightintake"
+            target="_Blank"
+            rel=""
             className={`${styles.download_app_playstore} ${styles.store_wrapper}`}
           >
             <div className={`${styles.playstore_logo}`}>

@@ -1,6 +1,32 @@
+"use client";
+
 import styles from "./header.module.css";
 
 export default function HeaderComponent() {
+  const handleAppRedirect = () => {
+    const userAgent = navigator.userAgent || navigator.vendor;
+
+    const isAndroid = /android/i.test(userAgent);
+    const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+
+    if (isAndroid) {
+      window.open(
+        "https://play.google.com/store/apps/details?id=com.kineticscapestudios.rightintake",
+        "_blank"
+      );
+    } else if (isIOS) {
+      window.open(
+        "https://apps.apple.com/in/app/right-intake/id6738113419",
+        "_blank"
+      );
+    } else {
+      // Optional fallback
+      window.open(
+        "https://play.google.com/store/apps/details?id=com.kineticscapestudios.rightintake",
+        "_blank"
+      );
+    }
+  };
   return (
     <>
       <div className={`${styles.nav_component_container}`}>
@@ -16,14 +42,13 @@ export default function HeaderComponent() {
               <span>Right Intake</span>
             </div>
           </div>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.kineticscapestudios.rightintake"
-            target="_blank"
+          <div
+            onClick={handleAppRedirect}
             rel="noopener noreferrer"
             className={styles.brand_app_button}
           >
             <span>Get the app</span>
-          </a>
+          </div>
 
           {/* <div
             className={styles.brand_app_button}
@@ -32,7 +57,6 @@ export default function HeaderComponent() {
           >
             <span>Get the app</span>
           </div> */}
-
         </div>
       </div>
     </>

@@ -1,196 +1,177 @@
-"use client"
+"use client";
 
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, FormEvent } from "react";
+import Editor from "@/components/blog-builder/Editor";
+import Preview from "@/components/blog-builder/Preview";
+import { BlogBlock } from "@/components/blog-builder/types";
 import { baseurl } from "@/app/Data/Api";
 import styles from "@/components/css/createblog.module.css";
 
-interface ContentSection {
-    heading: string;
-    paragraph: string;
-    image: string;
-    imageAlt: string;
-}
-
-interface FormState {
-    title: string;
-    slug: string;
-    date: string;
-    banner: string;
-    tags: string;
-    preview: string;
-    ctaText: string;
-    ctaLink: string;
-    content: ContentSection[];
-}
-
 const BlogCreate: React.FC = () => {
-    const [form, setForm] = useState<FormState>({
-        title: "",
-        slug: "",
-        date: "",
-        banner: "",
-        tags: "",
-        preview: "",
-        ctaText: "",
-        ctaLink: "",
-        content: [{ heading: "", paragraph: "", image: "", imageAlt: "" }],
-    });
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [slug, setSlug] = useState("");
+  const [tags, setTags] = useState("");
+  const [banner, setBanner] = useState("");
+  const [blocks, setBlocks] = useState<BlogBlock[]>([]);
+  const [view, setView] = useState<"create" | "preview">("create");
+  const [metaTitle, setMetaTitle] = useState("");
+  const [metaDescription, setMetaDescription] = useState("");
+  const [preview, setPreview] = useState("");
+  const [ogImage, setOgImage] = useState("");
+  const [keywords, setKeywords] = useState("");
 
-    const updateForm = (key: keyof FormState, value: string) => {
-        setForm((prev) => ({ ...prev, [key]: value }));
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const blogData = {
+      title,
+      slug,
+      date: date.toISOString(),
+      tags: tags.split(",").map((tag) => tag.trim()),
+      banner,
+      metaTitle,
+      metaDescription,
+      ogImage,
+      preview,
+      keywords: keywords.split(",").map((k) => k.trim()),
+      content: blocks,
     };
 
-    const updateContent = (index: number, key: keyof ContentSection, value: string) => {
-        const updatedContent = [...form.content];
-        updatedContent[index][key] = value;
-        setForm((prev) => ({ ...prev, content: updatedContent }));
-    };
+    try {
+      const response = await fetch(`${baseurl}/blogs/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
+        },
+        body: JSON.stringify(blogData),
+      });
 
-    const addSection = () => {
-        setForm((prev) => ({
-            ...prev,
-            content: [...prev.content, { heading: "", paragraph: "", image: "", imageAlt: "" }],
-        }));
-    };
+      const data = await response.json();
 
-    const removeSection = (index: number) => {
-        const updatedContent = form.content.filter((_, i) => i !== index);
-        setForm((prev) => ({ ...prev, content: updatedContent }));
-    };
+      if (response.ok) {
+        alert("✅ Blog saved successfully!");
+        setTitle("");
+        setSlug("");
+        setTags("");
+        setBanner("");
+        setMetaTitle("");
+        setMetaDescription("");
+        setOgImage("");
+        setKeywords("");
+        setPreview("");
+        setBlocks([]);
+      } else {
+        alert("❌ Failed to save blog: " + data.message);
+      }
+    } catch (err) {
+      console.error("Error saving blog:", err);
+      alert("❌ Unexpected error. See console.");
+    }
+  };
+  return (
+    <div className={styles.container}>
+      <h1>Create Blog Post</h1>
+      <div className={styles.toggleTabs}>
+        <button
+          onClick={() => setView("create")}
+          className={view === "create" ? styles.activeTab : ""}
+        >
+          🛠 Create
+        </button>
+        <button
+          onClick={() => setView("preview")}
+          className={view === "preview" ? styles.activeTab : ""}
+        >
+          👁 Preview
+        </button>
+      </div>
+      {view === "create" ? (
+        <form onSubmit={handleSubmit} className={styles.form}>
+          {/* Metadata inputs */}
+          <input
+            placeholder="Blog Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+            className={`${styles.formInput}`}
+          />
+          <input
+            placeholder="Slug (URL)"
+            value={slug}
+            onChange={(e) => setSlug(e.target.value)}
+            required
+            className={`${styles.formInput}`}
+          />
+          <input
+            placeholder="Tags (comma separated)"
+            value={tags}
+            onChange={(e) => setTags(e.target.value)}
+            className={`${styles.formInput}`}
+          />
+          <input
+            placeholder="Banner Image URL"
+            value={banner}
+            onChange={(e) => setBanner(e.target.value)}
+            className={`${styles.formInput}`}
+          />
+          <input
+            placeholder="preview text"
+            value={preview}
+            onChange={(e) => setPreview(e.target.value)}
+            className={`${styles.formInput}`}
+          />
+          <input
+            type="date"
+            value={date.toISOString().split("T")[0]}
+            onChange={(e) => setDate(new Date(e.target.value))}
+            className={`${styles.formInput}`}
+          />
+          {/* SEO Metadata */}
+          <input
+            placeholder="Meta Title"
+            value={metaTitle}
+            onChange={(e) => setMetaTitle(e.target.value)}
+            className={styles.formInput}
+          />
+          <textarea
+            placeholder="Meta Description"
+            value={metaDescription}
+            onChange={(e) => setMetaDescription(e.target.value)}
+            className={styles.formInput}
+          />
+          <input
+            placeholder="OG Image URL"
+            value={ogImage}
+            onChange={(e) => setOgImage(e.target.value)}
+            className={styles.formInput}
+          />
+          <input
+            placeholder="SEO Keywords (comma separated)"
+            value={keywords}
+            onChange={(e) => setKeywords(e.target.value)}
+            className={styles.formInput}
+          />
 
-    const handleSubmit = async (e: FormEvent) => {
-        e.preventDefault();
+          {/* CTA */}
+          <Editor blocks={blocks} onChange={setBlocks} />
 
-        try {
-            const response = await fetch(`${baseurl}/blogs/create`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
-                },
-                body: JSON.stringify(form),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                alert("✅ Blog saved successfully!");
-                setForm({
-                    title: "",
-                    slug: "",
-                    date: "",
-                    banner: "",
-                    tags: "",
-                    preview: "",
-                    ctaText: "",
-                    ctaLink: "",
-                    content: [{ heading: "", paragraph: "", image: "", imageAlt: "" }],
-                });
-            } else {
-                alert("❌ Failed to save blog: " + data.message);
-            }
-        } catch (error) {
-            console.error("Error saving blog:", error);
-            alert("❌ Error saving blog. Check console.");
-        }
-    };
-
-    return (
-        <div className={styles.blog_create_container}>
-            <h1>Create New Blog</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    placeholder="Blog Title"
-                    value={form.title}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => updateForm("title", e.target.value)}
-                />
-                <input
-                    placeholder="Slug"
-                    value={form.slug}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => updateForm("slug", e.target.value)}
-                />
-                <input
-                    type="date"
-                    value={form.date}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => updateForm("date", e.target.value)}
-                />
-                <input
-                    placeholder="Banner Image URL"
-                    value={form.banner}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => updateForm("banner", e.target.value)}
-                />
-                <input
-                    placeholder="Tags (comma separated)"
-                    value={form.tags}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => updateForm("tags", e.target.value)}
-                />
-                <textarea
-                    placeholder="Preview Text"
-                    value={form.preview}
-                    onChange={(e: ChangeEvent<HTMLTextAreaElement>) => updateForm("preview", e.target.value)}
-                />
-
-                <h3>CTA</h3>
-                <input
-                    placeholder="CTA Text"
-                    value={form.ctaText}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => updateForm("ctaText", e.target.value)}
-                />
-                <input
-                    placeholder="CTA Link"
-                    value={form.ctaLink}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => updateForm("ctaLink", e.target.value)}
-                />
-
-                <h2>Blog Sections</h2>
-                {form.content.map((section, index) => (
-                    <div key={index} className={styles.section_block}>
-                        <input
-                            placeholder="Heading"
-                            value={section.heading}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                updateContent(index, "heading", e.target.value)
-                            }
-                        />
-                        <textarea
-                            placeholder="Paragraph (HTML supported)"
-                            value={section.paragraph}
-                            onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-                                updateContent(index, "paragraph", e.target.value)
-                            }
-                        />
-                        <h2>Paragraph preview:</h2>
-                        <p dangerouslySetInnerHTML={{ __html: section.paragraph }}></p>
-                        <input
-                            placeholder="Image URL"
-                            value={section.image}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                updateContent(index, "image", e.target.value)
-                            }
-                        />
-                        <h2>Image preview:</h2>
-                        <img src={section.image || " "} alt={section.imageAlt || "Blog Image"} width="100%" />
-                        <input
-                            placeholder="Image Alt Text"
-                            value={section.imageAlt}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                updateContent(index, "imageAlt", e.target.value)
-                            }
-                        />
-                        <button type="button" onClick={() => removeSection(index)}>
-                            Remove Section
-                        </button>
-                    </div>
-                ))}
-                <button type="button" onClick={addSection}>
-                    + Add Section
-                </button>
-
-                <br />
-                <button type="submit">Save Blog</button>
-            </form>
-        </div>
-    );
+          <button type="submit" className={styles.submitButton}>
+            ✅ Save Blog
+          </button>
+        </form>
+      ) : (
+        <Preview
+          blocks={blocks}
+          title={title}
+          slug={slug}
+          tags={tags}
+          banner={banner}
+        />
+      )}
+    </div>
+  );
 };
 
 export default BlogCreate;

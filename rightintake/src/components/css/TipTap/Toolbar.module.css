@@ -1,0 +1,39 @@
+.toolbarWrapper {
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  margin-bottom: 8px;
+}
+
+.toolButton {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolButton:hover {
+  background-color: #f0f0f0;
+}
+
+.active {
+  background-color: #333;
+  color: white;
+  border-color: #333;
+}
+
+.colorInput {
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+}

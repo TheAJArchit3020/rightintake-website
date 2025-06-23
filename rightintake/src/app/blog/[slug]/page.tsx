@@ -42,20 +42,20 @@ export async function generateMetadata({
     if (!blog) return {};
 
     return {
-      title: blog.meta?.ogTitle || blog.title,
-      description: blog.meta?.ogDescription || blog.preview,
-      keywords: blog.tags,
+      title: blog.metaTitle || blog.title,
+      description: blog.metaDescription || blog.preview,
+      keywords: blog.keywords,
       openGraph: {
-        title: blog.meta?.ogTitle || blog.title,
-        description: blog.meta?.ogDescription || blog.preview,
+        title: blog.metaTitle || blog.title,
+        description: blog.metaDescription || blog.preview,
         images: [
           {
-            url: blog.meta?.ogImage || blog.banner,
+            url: blog.ogImage || blog.banner,
             width: 1200,
             height: 630,
           },
         ],
-        type: blog.meta?.ogType || "article",
+        type: "article",
       },
     };
   } catch (error) {

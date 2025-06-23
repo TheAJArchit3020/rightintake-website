@@ -1,0 +1,40 @@
+.wrapper {
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.toolbar button,
+.toolbar select {
+  padding: 6px 10px;
+  font-size: 14px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toolbar button:hover,
+.toolbar select:hover {
+  background-color: #eaeaea;
+}
+
+.editor {
+  min-height: 120px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  background-color: white;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.renderedText {
+  padding: 10px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
