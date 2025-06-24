@@ -23,7 +23,7 @@ async function fetchBlogs(): Promise<Blog[]> {
 }
 
 export const metadata = {
-  title: "Right Intake Blogs - Nutrition Tips, Health Insights & Diet Advice",
+  title: "Right Intake Blog: Nutrition & Health Tips",
   description:
     "Explore expert-written nutrition blogs on Right Intake. Get actionable tips, health insights, diet strategies, and find the right plan from certified nutritionists.",
   keywords: [
