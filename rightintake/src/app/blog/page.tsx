@@ -77,7 +77,7 @@ export default async function BlogList() {
               className={`${styles.banner}`}
             />
             <div className={`${styles.blog_content}`}>
-              <h2>{blog.title}</h2>
+              <h1>{blog.title}</h1>
               <p className={`${styles.blog_date}`}>
                 {new Date(blog.date).toLocaleDateString("en-US", {
                   year: "numeric",

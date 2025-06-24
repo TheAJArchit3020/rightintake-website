@@ -11,17 +11,17 @@ export default function MainSection() {
         <div className={`${styles.main_section_heading_wrapper}`}>
           <div className={`${styles.main_section_heading_content}`}>
             <div className={`${styles.main_sec_head_content_1}`}>
-              <span>Work Smarter, Eat Healthier</span>
+              <h1>Work Smarter, Eat Healthier</h1>
             </div>
             <div className={`${styles.main_sec_head_content_2}`}>
-              <span>#The RightIntake Way</span>
+              <h1>#The RightIntake Way</h1>
             </div>
             <div className={`${styles.main_sec_head_content_3}`}>
-              <span>
+              <p>
                 Right Intake helps you eat smarter, track better, and achieve
                 your health goals effortlessly by connecting with top
                 nutritionists near you.
-              </span>
+              </p>
               <br />
             </div>
           </div>
