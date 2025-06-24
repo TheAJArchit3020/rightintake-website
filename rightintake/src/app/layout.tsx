@@ -31,6 +31,9 @@ export const metadata: Metadata = {
     "nutrition AI app",
     "calorie counting made easy",
   ],
+  alternates: {
+    canonical: "https://rightintake.com",
+  },
   openGraph: {
     title: "Right Intake – AI Calorie Estimator from Meal Photos",
     description:

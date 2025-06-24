@@ -30,6 +30,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const canonicalUrl = `https://rightintake.com/blog/${slug}`;
   try {
     const res = await fetch(`${baseurl}/blogs/get-all-blogs/${slug}`);
     if (!res.ok) {
@@ -45,6 +46,9 @@ export async function generateMetadata({
       title: blog.metaTitle || blog.title,
       description: blog.metaDescription || blog.preview,
       keywords: blog.keywords,
+      alternates: {
+        canonical: canonicalUrl,
+      },
       openGraph: {
         title: blog.metaTitle || blog.title,
         description: blog.metaDescription || blog.preview,

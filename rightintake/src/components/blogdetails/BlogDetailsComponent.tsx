@@ -47,7 +47,7 @@ export default function BlogPageComponent({ blog }: BlogPageComponentProps) {
               datePublished: blog.date,
               mainEntityOfPage: {
                 "@type": "WebPage",
-                "@id": `https://rightintake.com/blogs/${blog.slug}`,
+                "@id": `https://rightintake.com/blog/${blog.slug}`,
               },
             }),
           }}

@@ -38,6 +38,9 @@ export const metadata = {
     "weight loss",
     "balanced diet",
   ],
+  alternates: {
+    canonical: "https://rightintake.com/blog",
+  },
   openGraph: {
     title: "Right Intake Blogs - Nutrition Tips, Health Insights & Diet Advice",
     description:
