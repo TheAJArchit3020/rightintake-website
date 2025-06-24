@@ -13,27 +13,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Right Intake – Personalized Nutrition Plans & Calorie Tracker",
+  title: "Right Intake – AI Calorie Estimator from Meal Photos",
   description:
-    "Right Intake helps you discover customized nutrition plans from certified experts. Whether you're focused on fitness, managing PCOS, or improving health, find your ideal diet strategy and connect with top nutritionists and track calories progress with ease on Right Intake..",
+    "Right Intake uses AI to estimate calories, protein, and macros from a photo of your meal. Built for Indian food and busy lives — no weighing, no manual tracking.",
   icons: {
     icon: "/images/header/rightintakelogo_website.png",
   },
   keywords: [
-    "nutrition plans",
-    "diet plans",
-    "online nutritionist",
-    "PCOS diet",
-    "weight loss diet",
-    "fitness meal plans",
+    "AI calorie tracker",
+    "photo calorie estimator",
+    "Indian food calorie counter",
+    "calorie tracker app",
+    "protein tracking",
     "Right Intake",
-    "personalized nutrition",
-    "Caorie Counter",
+    "calorie app India",
+    "automatic food logging",
+    "nutrition AI app",
+    "calorie counting made easy",
   ],
   openGraph: {
-    title: "Right Intake – Personalized Nutrition Plans & Calorie Tracker",
+    title: "Right Intake – AI Calorie Estimator from Meal Photos",
     description:
-      "Explore customized nutrition plans crafted by certified nutritionists. Schedule calls and track calories progress with ease on Right Intake.",
+      "Track calories and macros by just clicking a photo. Right Intake uses AI to estimate nutrition values — built for Indian food and fast tracking.",
     url: "https://rightintake.com",
     type: "website",
   },

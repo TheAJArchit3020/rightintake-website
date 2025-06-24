@@ -182,6 +182,9 @@
   .blog_detail {
     padding: 40px 20px;
   }
+  .quoteBlockRender {
+    font-size: 2rem;
+  }
 
   .blog_content_container {
     flex-direction: column;
@@ -242,7 +245,9 @@
   .blog_detail {
     padding: 40px 20px;
   }
-
+  .quoteBlockRender {
+    font-size: 1.7rem;
+  }
   .blog_content_container {
     flex-direction: column;
   }

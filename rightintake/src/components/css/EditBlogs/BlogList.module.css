@@ -1,0 +1,56 @@
+.container {
+  padding: 24px;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.blogList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blogItem {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  background-color: #fafafa;
+}
+
+.blogTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.blogSlug {
+  font-size: 14px;
+  color: #666;
+}
+
+.actions {
+  margin-top: 10px;
+}
+
+.editBtn,
+.deleteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 16px;
+  text-decoration: underline;
+}
+
+.editBtn {
+  color: #0070f3;
+}
+
+.deleteBtn {
+  color: #e00;
+}

@@ -59,7 +59,13 @@ export default function BlogPageComponent({ blog }: BlogPageComponentProps) {
           <div className={`${styles.blog_body}`}>
             <div className={`${styles.blog_header}`}>
               <h1>{blog.title}</h1>
-              <p className={`${styles.blog_date}`}>{blog.date}</p>
+              <p className={`${styles.blog_date}`}>
+                {new Date(blog.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
             </div>
             <img
               className={`${styles.blog_banner}`}

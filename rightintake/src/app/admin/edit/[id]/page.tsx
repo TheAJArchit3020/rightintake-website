@@ -1,13 +1,18 @@
 "use client";
+import React, { useEffect, useState, FormEvent } from "react";
+import { useParams } from "next/navigation";
 
-import React, { useState, FormEvent } from "react";
 import Editor from "@/components/blog-builder/Editor";
 import Preview from "@/components/blog-builder/Preview";
+
 import { BlogBlock } from "@/components/blog-builder/types";
 import { baseurl } from "@/app/Data/Api";
 import styles from "@/components/css/createblog.module.css";
 
-const BlogCreate: React.FC = () => {
+export default function BlogEditPage() {
+  const { id } = useParams() as { id: string };
+  const [loading, setLoading] = useState(true);
+
   const [title, setTitle] = useState("");
   const [date, setDate] = useState(new Date());
   const [slug, setSlug] = useState("");
@@ -22,66 +27,86 @@ const BlogCreate: React.FC = () => {
   const [keywords, setKeywords] = useState("");
   const [pinned, setPinned] = useState(false);
 
-  const handleSubmit = async (e: FormEvent) => {
+  // Load existing blog
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const res = await fetch(`${baseurl}/blogs/get-blog/${id}`);
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message || "Fetch failed");
+
+        setTitle(data.title);
+        setSlug(data.slug);
+        setDate(new Date(data.date));
+        setTags(data.tags.join(", "));
+        setBanner(data.banner);
+        setBlocks(data.content || []);
+        setMetaTitle(data.metaTitle);
+        setMetaDescription(data.metaDescription);
+        setOgImage(data.ogImage);
+        setKeywords(data.keywords.join(", "));
+        setPreview(data.preview);
+      } catch (err) {
+        alert("Failed to load blog");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlog();
+  }, [id]);
+
+  const handleUpdate = async (e: FormEvent) => {
     e.preventDefault();
 
     const blogData = {
       title,
       slug,
       date: date.toISOString(),
-      tags: tags.split(",").map((tag) => tag.trim()),
+      tags: tags.split(",").map((t) => t.trim()),
       banner,
+      content: blocks,
       metaTitle,
       metaDescription,
-      ogImage,
       preview,
-      keywords: keywords.split(",").map((k) => k.trim()),
-      content: blocks,
+      ogImage,
       pinned,
+      keywords: keywords.split(",").map((k) => k.trim()),
     };
 
     try {
-      const response = await fetch(`${baseurl}/blogs/create`, {
-        method: "POST",
+      const res = await fetch(`${baseurl}/blogs/update-blog/${id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
         body: JSON.stringify(blogData),
       });
+      const data = await res.json();
 
-      const data = await response.json();
-
-      if (response.ok) {
-        alert("✅ Blog saved successfully!");
-        setTitle("");
-        setSlug("");
-        setTags("");
-        setBanner("");
-        setMetaTitle("");
-        setMetaDescription("");
-        setOgImage("");
-        setKeywords("");
-        setPreview("");
-        setBlocks([]);
-        setPinned(false);
+      if (res.ok) {
+        alert("✅ Blog updated!");
       } else {
-        alert("❌ Failed to save blog: " + data.message);
+        alert("❌ Error: " + data.message);
       }
     } catch (err) {
-      console.error("Error saving blog:", err);
+      console.error(err);
       alert("❌ Unexpected error. See console.");
     }
   };
+
+  if (loading) return <p>Loading...</p>;
+
   return (
     <div className={styles.container}>
-      <h1>Create Blog Post</h1>
+      <h1>Edit Blog Post</h1>
       <div className={styles.toggleTabs}>
         <button
           onClick={() => setView("create")}
           className={view === "create" ? styles.activeTab : ""}
         >
-          🛠 Create
+          🛠 Edit
         </button>
         <button
           onClick={() => setView("preview")}
@@ -91,8 +116,7 @@ const BlogCreate: React.FC = () => {
         </button>
       </div>
       {view === "create" ? (
-        <form onSubmit={handleSubmit} className={styles.form}>
-          {/* Metadata inputs */}
+        <form onSubmit={handleUpdate} className={styles.form}>
           <label className={styles.formLabel}>
             <input
               type="checkbox"
@@ -105,41 +129,38 @@ const BlogCreate: React.FC = () => {
             placeholder="Blog Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            required
-            className={`${styles.formInput}`}
+            className={styles.formInput}
           />
           <input
-            placeholder="Slug (URL)"
+            placeholder="Slug"
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
-            required
-            className={`${styles.formInput}`}
+            className={styles.formInput}
           />
           <input
             placeholder="Tags (comma separated)"
             value={tags}
             onChange={(e) => setTags(e.target.value)}
-            className={`${styles.formInput}`}
+            className={styles.formInput}
           />
           <input
             placeholder="Banner Image URL"
             value={banner}
             onChange={(e) => setBanner(e.target.value)}
-            className={`${styles.formInput}`}
+            className={styles.formInput}
           />
           <input
-            placeholder="preview text"
+            placeholder="Preview text"
             value={preview}
             onChange={(e) => setPreview(e.target.value)}
-            className={`${styles.formInput}`}
+            className={styles.formInput}
           />
           <input
             type="date"
             value={date.toISOString().split("T")[0]}
             onChange={(e) => setDate(new Date(e.target.value))}
-            className={`${styles.formInput}`}
+            className={styles.formInput}
           />
-          {/* SEO Metadata */}
           <input
             placeholder="Meta Title"
             value={metaTitle}
@@ -159,17 +180,16 @@ const BlogCreate: React.FC = () => {
             className={styles.formInput}
           />
           <input
-            placeholder="SEO Keywords (comma separated)"
+            placeholder="SEO Keywords"
             value={keywords}
             onChange={(e) => setKeywords(e.target.value)}
             className={styles.formInput}
           />
 
-          {/* CTA */}
           <Editor blocks={blocks} onChange={setBlocks} />
 
           <button type="submit" className={styles.submitButton}>
-            ✅ Save Blog
+            💾 Update Blog
           </button>
         </form>
       ) : (
@@ -183,6 +203,4 @@ const BlogCreate: React.FC = () => {
       )}
     </div>
   );
-};
-
-export default BlogCreate;
+}

@@ -75,7 +75,13 @@ export default async function BlogList() {
             />
             <div className={`${styles.blog_content}`}>
               <h2>{blog.title}</h2>
-              <p className={`${styles.blog_date}`}>{blog.date}</p>
+              <p className={`${styles.blog_date}`}>
+                {new Date(blog.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
               <p className={`${styles.preview_text}`}>{blog.preview}</p>
               <div className={`${styles.tags}`}>
                 {blog.tags.map((tag, idx) => (

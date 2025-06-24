@@ -8,6 +8,7 @@ export type BlockType =
   | "button";
 
 export interface BlogBlock {
+  id?: string;
   type: BlockType;
   data: any; // will be typed per block component
 }
