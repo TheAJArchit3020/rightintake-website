@@ -18,9 +18,8 @@ export default function MainSection() {
             </div>
             <div className={`${styles.main_sec_head_content_3}`}>
               <p>
-                Right Intake helps you eat smarter, track better, and achieve
-                your health goals effortlessly by connecting with top
-                nutritionists near you.
+                Right Intake helps you make smarter food choices by snapping a
+                photo of your meal to instantly get its nutritional value.
               </p>
               <br />
             </div>

@@ -27,13 +27,12 @@ export default function FeatureSection() {
               className={`${styles.nutri_plans_message_para} ${styles.message_para}`}
             >
               <span>
-                Take a quick photo of your meal and instantly get detailed nutrition insights.
+                Take a quick photo of your meal and instantly get detailed
+                nutrition insights.
               </span>
             </div>
           </div>
         </div>
-
-
 
         <div className={`${styles.schedule_call_wrapper}`}>
           <div className={`${styles.schedule_call_message}`}>
@@ -45,8 +44,9 @@ export default function FeatureSection() {
             <div
               className={`${styles.schedule_call_message_para} ${styles.message_para}`}
             >
-              <span style={{ textAlign: 'center' }}>
-                Tap on any food photo to instantly view detailed nutritional facts and calorie counts.
+              <span style={{ textAlign: "center" }}>
+                Tap on any food photo to instantly view detailed nutritional
+                facts and calorie counts.
               </span>
             </div>
           </div>
@@ -57,7 +57,6 @@ export default function FeatureSection() {
             />
           </div>
         </div>
-
 
         <div className={`${styles.nutri_plans_wrapper}`}>
           <div className={`${styles.nutri_plans_message_wrapper}`}>
@@ -70,20 +69,20 @@ export default function FeatureSection() {
               className={`${styles.nutri_plans_message_para} ${styles.message_para}`}
             >
               <span>
-                Add your workouts or runs and get real-time calorie burn estimates based on your activity details.
+                Add your workouts or runs and get real-time calorie burn
+                estimates based on your activity details.
               </span>
             </div>
           </div>
-          <div className={`${styles.nutri_plans_image}`} style={{width: '70%'}} >
-            <img
-              src="/images/homepage/FeatureSection/exercises.png"
-              alt=""
-            />
+          <div
+            className={`${styles.nutri_plans_image}`}
+            style={{ width: "70%" }}
+          >
+            <img src="/images/homepage/FeatureSection/exercises.png" alt="" />
           </div>
         </div>
 
-
-         <div className={`${styles.schedule_call_wrapper}`}>
+        <div className={`${styles.schedule_call_wrapper}`}>
           <div className={`${styles.schedule_call_message}`}>
             <div
               className={`${styles.schedule_call_message_head} ${styles.message_head}`}
@@ -93,19 +92,22 @@ export default function FeatureSection() {
             <div
               className={`${styles.schedule_call_message_para} ${styles.message_para}`}
             >
-              <span style={{ textAlign: 'center' }}>
-                Stay on top of your fitness with detailed logs for workouts, steps, and active minutes—all in one place.
+              <span style={{ textAlign: "center" }}>
+                Stay on top of your fitness with detailed logs for workouts,
+                steps, and active minutes—all in one place.
               </span>
             </div>
           </div>
-          <div className={`${styles.schedule_call_image}`}   style={{width: '70%'}} >
+          <div
+            className={`${styles.schedule_call_image}`}
+            style={{ width: "70%" }}
+          >
             <img
               src="/images/homepage/FeatureSection/everyday-move.png"
               alt=""
             />
           </div>
         </div>
-
 
         <div className={`${styles.best_part_wrapper}`}>
           <div className={`${styles.best_part_message}`}>
@@ -117,10 +119,10 @@ export default function FeatureSection() {
             <div
               className={`${styles.best_part_message_para} ${styles.message_para}`}
             >
-              <span>
-                No hassle, no endless searching, no back-and-forth calls—just a
-                quick and effortless way to reach your dream body!
-              </span>
+              <p>
+                No hassle, no endless searching, no complicated steps—just quick
+                tracking and an effortless path to your dream body!
+              </p>
             </div>
           </div>
           <div className={`${styles.best_part_image}`}>
@@ -132,10 +134,11 @@ export default function FeatureSection() {
         </div>
 
         <div className={`${styles.tracking_section_heading}`}>
-          <span>
-            Having a nutritionist and a plan is great, but if you don’t track,
-            progress is just a guess—we’ve got you covered!
-          </span>
+          <p>
+            Having smart tools like meal scanning and activity logging means
+            you’re no longer guessing — track with ease and stay on top of your
+            goals!
+          </p>
         </div>
         <div className={`${styles.tracking_wrapper}`}>
           <div className={`${styles.tracking_message}`}>
