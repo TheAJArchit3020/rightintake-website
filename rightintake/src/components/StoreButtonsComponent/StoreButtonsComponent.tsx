@@ -21,7 +21,7 @@ const StoreButtonsComponent: React.FC<NavComponentStoresProps> = ({
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img src="/images/googleplay.png" alt="Google Play Store" />
+        <img src="/images/googlePlay.png" alt="Google Play Store" />
       </a>
     </div>
   );
