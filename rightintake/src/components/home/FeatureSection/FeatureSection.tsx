@@ -1,170 +1,114 @@
+"use client";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "../../../app/globals.css";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import styles from "./FeatureSection.module.css";
 
 export default function FeatureSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const spacerRef = useRef<HTMLDivElement>(null);
+
+  gsap.registerPlugin(ScrollTrigger);
+  useGSAP(() => {
+    const panels = gsap.utils.toArray<HTMLElement>(
+      `.${styles.horizontalSlide}`
+    );
+    console.log(panels.length);
+    const container = document.querySelector(
+      `.${styles.horizontalContainer}`
+    ) as HTMLElement;
+    if (spacerRef.current) {
+      const scrollDistance = container.offsetWidth - window.innerWidth;
+      spacerRef.current.style.height = `${scrollDistance}`;
+    }
+    gsap.to(panels, {
+      xPercent: -100 * (panels.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: `.${styles.features_section_container}`,
+        pin: true,
+        start: "top top",
+        scrub: 1,
+        snap: {
+          snapTo: 1 / (panels.length - 1),
+          inertia: false,
+        },
+        end: () => "+=" + (container.offsetWidth - window.innerWidth),
+        //end: "+=10000",
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
   return (
-    <div className={`${styles.features_section_container}`}>
-      <div className={`${styles.features_section_wrapper}`}>
-        <div className={`${styles.features_section_heading}`}>
-          <span>
-            Struggling to See Results or Stay Consistent? We Make it Easy!
-          </span>
-        </div>
-
-        <div className={`${styles.nutri_plans_wrapper}`}>
-          <div className={`${styles.nutri_plans_image}`}>
-            <img
-              src="/images/homepage/FeatureSection/snap_and_know.png"
-              alt=""
-            />
-          </div>
-          <div className={`${styles.nutri_plans_message_wrapper}`}>
-            <div
-              className={`${styles.nutri_plans_message_head} ${styles.message_head}`}
-            >
-              <span>Snap & Know</span>
-            </div>
-            <div
-              className={`${styles.nutri_plans_message_para} ${styles.message_para}`}
-            >
-              <span>
-                Take a quick photo of your meal and instantly get detailed
-                nutrition insights.
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div className={`${styles.schedule_call_wrapper}`}>
-          <div className={`${styles.schedule_call_message}`}>
-            <div
-              className={`${styles.schedule_call_message_head} ${styles.message_head}`}
-            >
-              <span>Smart Food Scan</span>
-            </div>
-            <div
-              className={`${styles.schedule_call_message_para} ${styles.message_para}`}
-            >
-              <span style={{ textAlign: "center" }}>
-                Tap on any food photo to instantly view detailed nutritional
-                facts and calorie counts.
-              </span>
-            </div>
-          </div>
-          <div className={`${styles.schedule_call_image}`}>
-            <img
-              src="/images/homepage/FeatureSection/CallScheduling.png"
-              alt=""
-            />
-          </div>
-        </div>
-
-        <div className={`${styles.nutri_plans_wrapper}`}>
-          <div className={`${styles.nutri_plans_message_wrapper}`}>
-            <div
-              className={`${styles.nutri_plans_message_head} ${styles.message_head}`}
-            >
-              <span>Log Your Activity</span>
-            </div>
-            <div
-              className={`${styles.nutri_plans_message_para} ${styles.message_para}`}
-            >
-              <span>
-                Add your workouts or runs and get real-time calorie burn
-                estimates based on your activity details.
-              </span>
-            </div>
-          </div>
-          <div
-            className={`${styles.nutri_plans_image}`}
-            style={{ width: "70%" }}
-          >
-            <img src="/images/homepage/FeatureSection/exercises.png" alt="" />
-          </div>
-        </div>
-
-        <div className={`${styles.schedule_call_wrapper}`}>
-          <div className={`${styles.schedule_call_message}`}>
-            <div
-              className={`${styles.schedule_call_message_head} ${styles.message_head}`}
-            >
-              <span>Track Every Move, Every Day</span>
-            </div>
-            <div
-              className={`${styles.schedule_call_message_para} ${styles.message_para}`}
-            >
-              <span style={{ textAlign: "center" }}>
-                Stay on top of your fitness with detailed logs for workouts,
-                steps, and active minutes—all in one place.
-              </span>
-            </div>
-          </div>
-          <div
-            className={`${styles.schedule_call_image}`}
-            style={{ width: "70%" }}
-          >
-            <img
-              src="/images/homepage/FeatureSection/everyday-move.png"
-              alt=""
-            />
-          </div>
-        </div>
-
-        <div className={`${styles.best_part_wrapper}`}>
-          <div className={`${styles.best_part_message}`}>
-            <div
-              className={`${styles.best_part_message_head} ${styles.message_head}`}
-            >
-              <span>Thats the Best Part!!</span>
-            </div>
-            <div
-              className={`${styles.best_part_message_para} ${styles.message_para}`}
-            >
+    <div>
+      <div className={`${styles.features_section_container}`}>
+        <div className={styles.transparentContainer}></div>
+        <div className={styles.horizontalContainer}>
+          <div className={styles.horizontalSlide}>
+            <div className={styles.featureSlide}>
+              <h2>Snap & Know</h2>
               <p>
-                No hassle, no endless searching, no complicated steps—just quick
-                tracking and an effortless path to your dream body!
+                Take a quick photo of your meal and instantly get detailed
+                nutrition insights and count calories.
               </p>
+              <img
+                src="/images/homepage/FeatureSection/SearchAndTrack.png"
+                alt="PowerfulAndHugeDatabase"
+              />
             </div>
           </div>
-          <div className={`${styles.best_part_image}`}>
-            <img
-              src="/images/homepage/FeatureSection/bestPartBody.png"
-              alt=""
-            />
-          </div>
-        </div>
-
-        <div className={`${styles.tracking_section_heading}`}>
-          <p>
-            Having smart tools like meal scanning and activity logging means
-            you’re no longer guessing — track with ease and stay on top of your
-            goals!
-          </p>
-        </div>
-        <div className={`${styles.tracking_wrapper}`}>
-          <div className={`${styles.tracking_message}`}>
-            <div
-              className={`${styles.tracking_message_head} ${styles.message_head}`}
-            >
-              <span>Track Your Calories Effortlessly!</span>
-            </div>
-            <div
-              className={`${styles.tracking_message_para} ${styles.message_para}`}
-            >
-              <span>
-                Stay on top of your nutrition with our easy-to-use calorie
-                tracker because every meal counts!
-              </span>
+          <div className={styles.horizontalSlide}>
+            <div className={styles.featureSlide}>
+              <h2>Search & track</h2>
+              <p>
+                Effortlessly find and count calories with our huge & powerful
+                food database.
+              </p>
+              <img
+                src="/images/homepage/FeatureSection/SearchAndTrack.png"
+                alt="PowerfulAndHugeDatabase"
+              />
             </div>
           </div>
-          <div className={`${styles.tracking_image_wrapper}`}>
-            <img
-              src="/images/homepage/FeatureSection/trackingImage.png"
-              alt=""
-              className={`${styles.tracking_bg_img}`}
-            />
+          <div className={styles.horizontalSlide}>
+            <div className={styles.featureSlide}>
+              <h2>Track your exercises</h2>
+              <p>
+                Log workouts alongside your meals to get a complete picture of
+                your health.
+              </p>
+              <img
+                src="/images/homepage/FeatureSection/SearchAndTrack.png"
+                alt="PowerfulAndHugeDatabase"
+              />
+            </div>
+          </div>
+          <div className={styles.horizontalSlide}>
+            <div className={styles.featureSlide}>
+              <h2>See your progress</h2>
+              <p>
+                Visualize your health journey with daily and weekly insights.
+              </p>
+              <img
+                src="/images/homepage/FeatureSection/SearchAndTrack.png"
+                alt="PowerfulAndHugeDatabase"
+              />
+            </div>
           </div>
         </div>
       </div>
+      <div ref={spacerRef} />
     </div>
   );
 }

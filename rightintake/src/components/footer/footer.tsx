@@ -1,43 +1,53 @@
+import StoreButtonsComponent from "../StoreButtonsComponent/StoreButtonsComponent";
 import styles from "./footer.module.css";
 
 export default function Footer() {
   return (
-    <div className={`${styles.footer_container}`}>
+    <footer className={`${styles.footer_container}`}>
       <div className={`${styles.footer_wrapper}`}>
-        <div className={`${styles.footer_line_wrapper}`}></div>
-        <a className={`${styles.footer_brand_wrapper}`} href="/">
-          <div className={`${styles.brand_logo_wrapper}`}>
-            <img src="/images/header/rightintakelogo_website.png" alt="" />
-          </div>
-
-          <div className={`${styles.brand_name_wrapper}`}>
-            <span>Right Intake</span>
-          </div>
-        </a>
-        <a className={`${styles.t_and_c_container}`} href="/blog">
-          <span>Blog</span>
-        </a>
-        <a className={`${styles.t_and_c_container}`} href="/TermsandServices">
-          <span>Terms and services</span>
-        </a>
-        <div className={`${styles.contact_us_container}`}>
-          <div className={`${styles.contact_us_heading}`}>
-            <span>Contact Us</span>
-          </div>
-          <div className={`${styles.contact_us_email}`}>
-            <span>contact@rightitnake.com</span>
-          </div>
-
-          <a
-            href="https://play.google.com/store/apps/details?id=com.kineticscapestudios.rightintake"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.brand_app_button}
-          >
-            <span>Get the app</span>
+        <div className={styles.footerBrand}>
+          <a className={`${styles.footer_brand_wrapper}`} href="/">
+            <img
+              src="/images/header/rightintake_logo.svg"
+              alt="rightintakelogo_website"
+            />
           </a>
+          <p>Download Right Intake</p>
+          <StoreButtonsComponent />
+        </div>
+        <div>
+          <h3>Legal</h3>
+          <ul className={styles.LegalList}>
+            <li>
+              <a href="/privacy-policy" className={styles.legalEle}>
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="/TermsandServices" className={styles.legalEle}>
+                Terms of use
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>Socials</h3>
+          <ul className={styles.LegalList}>
+            <li>
+              <a
+                href="https://www.instagram.com/right.intake"
+                className={styles.SocialsEle}
+              >
+                Instagram
+                <img src="/images/instLogo.png" alt="Instagram Logo" />
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
+      <div className={styles.footerCopyright}>
+        <p>© Copyright 2025, All rights reserved</p>
+      </div>
+    </footer>
   );
 }

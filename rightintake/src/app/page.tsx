@@ -6,6 +6,8 @@ import ReviewSection from "@/components/home/ReviewSection/ReviewSection";
 import Footer from "@/components/footer/footer";
 import PinnedBlogsSection from "@/components/home/PinnedBlogSection/PinnedBlogSection";
 import { baseurl } from "./Data/Api";
+import CTASection from "@/components/home/CTASection/CTASection";
+import AppVideoSection from "@/components/home/AppVideoSection/AppVideoSection";
 
 async function getPinnedBlogs() {
   try {
@@ -26,9 +28,11 @@ export default async function Home() {
       <div className={`${styles.home_page_container}`}>
         <div className={`${styles.home_page_wrapper}`}>
           <MainSection />
+          <AppVideoSection />
           <FeatureSection />
-          <PinnedBlogsSection blogs={blogs} />
           <ReviewSection />
+          <CTASection />
+          <PinnedBlogsSection blogs={blogs} />
         </div>
       </div>
       <Footer />

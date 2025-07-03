@@ -1,0 +1,12 @@
+.nav_component_stores {
+  display: flex;
+  min-width: 180px;
+  align-items: center;
+  gap: 1rem; /* gap-4 = 1rem */
+}
+
+.nav_component_stores img {
+  width: 136px;
+  object-fit: cover;
+  height: auto;
+}

@@ -1,113 +1,145 @@
 .nav_component_container {
-  padding: 20px 30px;
-  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 15%);
+  backdrop-filter: blur(24px); /* xl = 24px blur */
+  background-color: rgba(255, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 50; /* Use the higher z-index, z-50 */
+  padding-left: 1.25rem; /* 5 * 0.25rem = 1.25rem */
+  padding-right: 1.25rem;
+  padding-top: 1rem; /* 4 * 0.25rem = 1rem */
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 1280px) {
+  .nav_component_container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.navlogo_ham_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .nav_component_wrapper {
+  max-width: 1280px; /* screen-xl in Tailwind = 1280px */
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
-
-.brand_logo_wrapper {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-}
-
-.nav_component_wrapper_content {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.brand_logo_name {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.brand_app_button {
-  border: 1px solid #adcddd;
-  border-radius: 8px;
-  width: 4.813rem;
-  height: 1.313rem;
-  background: linear-gradient(90deg, #B9C7CE 0%, #D5E2E9 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.5s ease;
-}
-
-.brand_app_button:hover {
-
-  transition: 0.5s ease;
-  scale: 1.05;
-}
-
-.brand_app_button span {
-  color: #093258;
-  font-size: 0.625rem;
-  font-weight: 500;
-}
-
-.brand_logo_wrapper img {
+.nav_component_pages {
+  flex-direction: column;
   width: 100%;
 }
-
-@media (min-width: 750px) {
-  .nav_component_container {
-    padding: 20px 60px;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 15%);
-  }
-
+@media (min-width: 1024px) {
   .nav_component_wrapper {
+    flex-direction: row;
+  }
+  .nav_component_pages {
     display: flex;
+    flex-direction: row;
+    width: 100%;
     justify-content: space-between;
   }
+}
 
+.navButtons {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem 0;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+}
+.navButtonsMobileOpen {
+  display: flex;
+}
+
+.navButtons a {
+  color: #757575;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+.navButtons a:hover {
+  color: #3f3f3f;
+}
+
+@media (min-width: 1024px) {
+  .navButtons {
+    position: relative;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-size: 1rem; /* text-base = 1rem */
+    font-weight: 500;
+    background: none;
+  }
+}
+.brand_logo_wrapper {
+  font-size: 1.125rem; /* text-lg = 1.125rem */
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem; /* gap-2 = 0.5rem */
+}
+
+@media (min-width: 1024px) {
   .brand_logo_wrapper {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
+    width: auto;
   }
-
-  .brand_app_button {
-    width: 120px;
-    padding: 0.5rem;
-  }
-
-  .brand_app_button span {
-    font-size: 1rem;
-    text-decoration: none;
+}
+.nav_component_stores {
+  display: none;
+}
+.storeButtons_mobile {
+  display: flex;
+}
+@media (min-width: 1024px) {
+  .nav_component_stores {
+    display: flex;
   }
 }
 
-@media (min-width: 1910px) {
-  .nav_component_container {
-    padding: 20px 80px;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 15%);
-  }
-
-  .nav_component_wrapper {
-    display: flex;
-    justify-content: space-between;
-  }
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 60;
 }
 
-@media (min-width: 2540px) {
-  .nav_component_container {
-    padding: 40px 100px;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 15%);
-  }
+.bar {
+  width: 100%;
+  height: 2px;
+  background: #333;
+  transition: 0.3s ease;
+}
+.barOpenTop {
+  transform: translateY(8px) rotate(45deg);
+}
+.barOpenMid {
+  opacity: 0;
+}
+.barOpenBot {
+  transform: translateY(-8px) rotate(-45deg);
+}
 
-  .nav_component_wrapper {
-    display: flex;
-    justify-content: space-between;
+@media (min-width: 1024px) {
+  .hamburger {
+    display: none;
   }
 }

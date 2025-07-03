@@ -1,0 +1,79 @@
+.ctaContainer {
+  position: relative;
+  top: 0;
+  background: linear-gradient(48.147deg, #9cd1ff 0%, #ffb0b0 30%, #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem;
+}
+
+.ctaWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.ctaWrapper h2 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+.ctaWrapper p {
+  font-size: 2.5rem;
+  color: #656565;
+  margin: 0;
+}
+.highlighter {
+  padding: 15px 40px;
+  background-color: #d35858;
+  border-radius: 40px;
+}
+.highlighter p {
+  font-size: 1.25rem;
+
+  color: white;
+  font-weight: 700;
+}
+
+@media (max-width: 780px) {
+  .ctaContainer {
+    padding: 4.75rem;
+  }
+
+  .ctaWrapper {
+    gap: 40px;
+  }
+  .ctaWrapper h2 {
+    font-size: 3.8rem;
+  }
+
+  .ctaWrapper p {
+    font-size: 2.3rem;
+  }
+  .highlighter {
+    padding: 15px 40px;
+  }
+  .highlighter p {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .ctaWrapper {
+    gap: 20px;
+  }
+  .ctaWrapper h2 {
+    font-size: 2rem;
+  }
+
+  .ctaWrapper p {
+    font-size: 1.25rem;
+  }
+  .highlighter {
+    padding: 5px 20px;
+  }
+  .highlighter p {
+    font-size: 1.25rem;
+  }
+}

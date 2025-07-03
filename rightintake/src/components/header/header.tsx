@@ -1,64 +1,63 @@
 "use client";
-
+import { useState } from "react";
+import StoreButtonsComponent from "../StoreButtonsComponent/StoreButtonsComponent";
 import styles from "./header.module.css";
 
 export default function HeaderComponent() {
-  const handleAppRedirect = () => {
-    const userAgent = navigator.userAgent || navigator.vendor;
-
-    const isAndroid = /android/i.test(userAgent);
-    const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
-
-    if (isAndroid) {
-      window.open(
-        "https://play.google.com/store/apps/details?id=com.kineticscapestudios.rightintake",
-        "_blank"
-      );
-    } else if (isIOS) {
-      window.open(
-        "https://apps.apple.com/in/app/right-intake/id6738113419",
-        "_blank"
-      );
-    } else {
-      // Optional fallback
-      window.open(
-        "https://play.google.com/store/apps/details?id=com.kineticscapestudios.rightintake",
-        "_blank"
-      );
-    }
-  };
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <>
-      <div className={`${styles.nav_component_container}`}>
+      <header className={`${styles.nav_component_container}`}>
         <div className={`${styles.nav_component_wrapper}`}>
-          <div className={`${styles.nav_component_wrapper_content}`}>
-            <a className={`${styles.brand_logo_wrapper}`} href="/">
-              <img
-                src="/images/header/rightintakelogo_website.png"
-                alt="rightintakelogo_website"
-              />
-            </a>
-            <div className={`${styles.brand_logo_name}`}>
-              <span>Right Intake</span>
+          <div className={styles.nav_component_pages}>
+            <div className={styles.navlogo_ham_wrapper}>
+              <a className={`${styles.brand_logo_wrapper}`} href="/">
+                <img
+                  src="/images/header/rightintake_logo.svg"
+                  alt="rightintakelogo_website"
+                />
+              </a>
+              <button
+                className={styles.hamburger}
+                onClick={() => setMenuOpen(!menuOpen)}
+                aria-label="Toggle menu"
+              >
+                <span
+                  className={`${styles.bar} ${
+                    menuOpen ? styles.barOpenTop : ""
+                  }`}
+                ></span>
+                <span
+                  className={`${styles.bar} ${
+                    menuOpen ? styles.barOpenMid : ""
+                  }`}
+                ></span>
+                <span
+                  className={`${styles.bar} ${
+                    menuOpen ? styles.barOpenBot : ""
+                  }`}
+                ></span>
+              </button>
             </div>
-          </div>
-          <div
-            onClick={handleAppRedirect}
-            rel="noopener noreferrer"
-            className={styles.brand_app_button}
-          >
-            <span>Get the app</span>
-          </div>
 
-          {/* <div
-            className={styles.brand_app_button}
-            onClick={() => window.open('https://www.google.com', '_blank')}
-            style={{ cursor: 'pointer' }}
-          >
-            <span>Get the app</span>
-          </div> */}
+            {/* Desktop nav */}
+            <div
+              className={`${styles.navButtons} ${
+                menuOpen ? styles.navButtonsMobileOpen : ""
+              }`}
+            >
+              <a href="/blog">Blog</a>
+              <a href="#">#TheRightIntakeWay</a>
+              <a href="#">Upcoming Features</a>
+            </div>
+            <StoreButtonsComponent
+              className={`${styles.nav_component_stores} ${
+                menuOpen ? styles.storeButtons_mobile : ""
+              }`}
+            />
+          </div>
         </div>
-      </div>
+      </header>
     </>
   );
 }

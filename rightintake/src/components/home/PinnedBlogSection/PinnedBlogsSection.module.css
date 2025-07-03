@@ -1,13 +1,12 @@
 .featuredWrapper {
   display: flex;
   flex-direction: column;
-  margin: 0 10rem;
-  border-top: 1px solid black;
+  margin: 2rem 10rem;
 }
 
 .heading {
   font-size: 3rem;
-  color: #093258;
+  color: #353535;
   font-weight: bold;
 }
 @media (max-width: 1025px) {
@@ -19,7 +18,7 @@
   }
   .heading {
     font-size: 3rem;
-    color: #093258;
+    color: #353535;
     font-weight: bold;
   }
 }
