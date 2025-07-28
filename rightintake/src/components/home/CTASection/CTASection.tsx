@@ -5,11 +5,10 @@ export default function CTASection() {
   return (
     <section className={styles.ctaContainer}>
       <div className={styles.ctaWrapper}>
-        <h2>Download Now! to</h2>
-        <p>Try Free! for 3 days</p>
+        <h2>Download now & enjoy a 3-day free trial!</h2>
         <StoreButtonsComponent />
         <div className={styles.highlighter}>
-          <p>Limited time offer!</p>
+          <p>Act now — offer ends soon!</p>
         </div>
       </div>
     </section>

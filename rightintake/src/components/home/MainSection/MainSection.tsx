@@ -1,27 +1,32 @@
 import StoreButtonsComponent from "@/components/StoreButtonsComponent/StoreButtonsComponent";
-import styles from "./MainSection.module.css"; // Assuming you're using CSS Modules
+import styles from "./MainSection.module.css";
 
 export default function MainSection() {
   return (
-    <div className={`${styles.main_section_container}`}>
-      <div className={styles.main_section_text}>
-        <h1 className={styles.main_section_text_heading}>
-          Right Intake
-          <br />
-          <span className={styles.main_section_text_heading_para}>
-            A fastest way to count your calories
-          </span>
-          <br />
-        </h1>
-        <span className={styles.main_section_text_heading_hashtag}>
-          #The Right Intake Way
-        </span>
-        <p className={styles.main_section_text_para}>
-          This is Right Intake a AI powered calorie counter where you can track
-          your calories with just a snap and its 90 % accurate
-        </p>
-        <StoreButtonsComponent />
+    <section className={styles.heroSection}>
+      <div className={styles.heroBgContainer}>
+        <img
+          src="/images/homepage/MainSection/main_bg.png"
+          alt="bg"
+          className={styles.heroBg}
+        />
       </div>
-    </div>
+      <div className={styles.heroContent}>
+        <h1 className={styles.heroTitle}>
+          A fastest way to count <br /> your calories
+        </h1>
+        <p className={styles.heroSubtitle}>
+          AI-powered calorie counter. Snap a photo, get instant nutrition
+          insights, and track your progress effortlessly.
+        </p>
+        <div className={styles.heroImageContainer}>
+          <img
+            src="/images/homepage/MainSection/CalorieCounting_with_AI.png"
+            alt="CaloriesCounting_with_AI"
+            className={styles.heroAppImg}
+          />
+        </div>
+      </div>
+    </section>
   );
 }

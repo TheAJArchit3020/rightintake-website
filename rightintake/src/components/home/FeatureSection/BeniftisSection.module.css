@@ -1,0 +1,72 @@
+.benefitsSection {
+  position: relative;
+  background: #181818;
+  color: #fff;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.benefitsHeading {
+  text-align: center;
+  padding: 60px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  background: #181818;
+  z-index: 10;
+}
+
+.benefitsPanelsWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 10vh;
+  height: 100vh;
+}
+
+.benefitPanel {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benifitContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  border-radius: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.benefitTextBlock {
+  flex: 1;
+  padding: 0 2rem;
+}
+
+.benefitTitle {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.benefitDesc {
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.benefitImg {
+  width: 240px;
+  height: 460px;
+  object-fit: contain;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ✅ Spacer with real height that affects layout */
+.emptyContainer{
+  height: calc(105vh * 3);
+}

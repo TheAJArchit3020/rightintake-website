@@ -15,3 +15,7 @@ body {
   font-optical-sizing: none;
   overflow-x: hidden;
 }
+
+.body-scroll-locked {
+  overflow-y: hidden !important;
+}

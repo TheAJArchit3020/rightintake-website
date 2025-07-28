@@ -1,7 +1,7 @@
 import MainSection from "@/components/home/MainSection/MainSection";
 import styles from "./page.module.css";
 import HeaderComponent from "@/components/header/header";
-import FeatureSection from "@/components/home/FeatureSection/FeatureSection";
+import BeniftisSection from "@/components/home/FeatureSection/BeniftsSection";
 import ReviewSection from "@/components/home/ReviewSection/ReviewSection";
 import Footer from "@/components/footer/footer";
 import PinnedBlogsSection from "@/components/home/PinnedBlogSection/PinnedBlogSection";
@@ -28,13 +28,10 @@ export default async function Home() {
       <div className={`${styles.home_page_container}`}>
         <div className={`${styles.home_page_wrapper}`}>
           <MainSection />
-          <AppVideoSection />
-          <FeatureSection />
-          <ReviewSection />
-          <CTASection />
-          <PinnedBlogsSection blogs={blogs} />
+          <BeniftisSection />
         </div>
       </div>
+      <CTASection />
       <Footer />
     </div>
   );
