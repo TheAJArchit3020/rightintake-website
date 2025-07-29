@@ -1,7 +1,7 @@
 .ctaContainer {
   position: relative;
   top: 0;
-  background: linear-gradient(135deg, #e8f5e8 0%, #fff5e6 50%, #ffe8e8 100%);
+  background: radial-gradient(circle at 20% 80%, #d6fbe8 0%, #eafcf4 40%, #f9fefa 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,7 @@
 }
 
 .ctaWrapper h2 {
-  font-size: 3.5rem;
+  font-size: 2.3rem;
   margin: 0;
   font-weight: 600;
   color: #2c2c2c;
@@ -31,7 +31,6 @@
   background-color: #2c2c2c;
   border-radius: 25px;
   transition: all 0.3s ease;
-  cursor: pointer;
 }
 
 .highlighter:hover {

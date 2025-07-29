@@ -23,6 +23,9 @@ export default function ReviewSection() {
         <h1 className={styles.Reviewheading}>
           Many users Love to count calories with Right Intake
         </h1>
+        <h1 className={styles.Reviewsubheading}>
+        Loved by thousands of users for effortless calorie tracking.
+        </h1>
         <div className={styles.reviews}>
           <ReviewCard
             imgLink="/images/homepage/ReviewSection/priyankakumari.jpeg"

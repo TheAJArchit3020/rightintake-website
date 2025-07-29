@@ -19,7 +19,7 @@ const sectionsData = [
   },
   {
     title: "Get personalized recommendations",
-    desc: "Based on your goals, preferences, and habits, we'll suggest recipes and meal plans that fit your lifestyle.",
+    desc: "Based on your goals, preferences, and habits, we'll protein,carbs,fats",
     img: "/images/benifits/foodInfo.png",
   },
   {
@@ -31,33 +31,98 @@ const sectionsData = [
 
 const BenefitsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const spacerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const panels = gsap.utils.toArray<HTMLElement>(`.${styles.benefitPanel}`);
-
     ScrollTrigger.killAll();
 
-    const totalPanels = panels.length;
-
-    // Use a default value for SSR, then update on client
-    const getViewportHeight = () => {
-      if (typeof window !== 'undefined') {
-        return window.innerHeight;
-      }
-      return 800; // Default fallback for SSR
-    };
-
-    gsap.to(panels, {
-      yPercent: -100 * (totalPanels - 1),
-      ease: "none",
+    gsap.to(`.${styles.benefitPanel1}`, {
+      opacity: 0,
       scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: `+=${getViewportHeight() * (totalPanels - 1)}`,
+        trigger: `.${styles.emptyContainer}`,
+        start: "bottom center",
+        end: "bottom top",
         scrub: 1,
+      },
+    });
+
+    gsap.to(`.${styles.benefitPanel2} `, {
+      opacity: 1,
+      scrollTrigger: {
+        trigger: `.${styles.emptyContainer}`,
+        start: "bottom center",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+
+    gsap.to(`.${styles.benefitPanel2} `, {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: `.${styles.emptyContainer1}`,
+        start: "bottom center",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+
+    gsap.to(`.${styles.benefitPanel3} `, {
+      opacity: 1,
+      scrollTrigger: {
+        trigger: `.${styles.emptyContainer1}`,
+        start: "bottom center",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+
+    gsap.to(`.${styles.benefitPanel3} `, {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: `.${styles.emptyContainer2}`,
+        start: "bottom center",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+
+    gsap.to(`.${styles.benefitPanel4} `, {
+      opacity: 1,
+      scrollTrigger: {
+        trigger: `.${styles.emptyContainer2}`,
+        start: "bottom center",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+
+    //color anim
+    gsap.to(`.${styles.benefitsPanelsWrapper}  `, {
+      backgroundColor: "#fffef4",
+      scrollTrigger: {
+        trigger: `.${styles.emptyContainer}`,
+        start: "bottom center",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+
+    gsap.to(`.${styles.benefitsPanelsWrapper}  `, {
+      backgroundColor: "#2a2a2a",
+      scrollTrigger: {
+        trigger: `.${styles.emptyContainer2}`,
+        start: "bottom center",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+
+    gsap.to(`.${styles.benefitsPanelsWrapper}  `, {
+      scrollTrigger: {
+        trigger: `.${styles.benefitsPanelsWrapper}`,
+        start: "top top",
+        endTrigger: `.${styles.emptyContainer3}`,
+        end: "bottom top",
         pin: true,
-        snap: 1 / (totalPanels - 1),
       },
     });
 
@@ -73,25 +138,67 @@ const BenefitsSection = () => {
         {sectionsData.map((section, idx) => {
           const isEven = (idx + 1) % 2 === 0;
           return (
-            <div key={idx} className={styles.benefitPanel}>
+            <div
+              key={idx}
+              className={`${styles.benefitPanel} ${styles.benefitPanel}${
+                idx + 1
+              }`}
+            >
               <div className={styles.benifitContainer}>
                 {isEven ? (
                   <>
-                    <img
-                      src={section.img}
-                      alt={section.title}
-                      className={styles.benefitImg}
-                    />
-                    <div className={styles.benefitTextBlock}>
+                    <div className={styles.assetContainer}>
+                      <img
+                        src={
+                          idx + 1 === 2
+                            ? "/images/benifits/scroll/black2.png"
+                            : idx + 1 === 4
+                            ? "/images/benifits/scroll/white4.png"
+                            : "/images/benifits/scroll/black3.png"
+                        }
+                        alt={section.title}
+                        className={styles.scrollBar}
+                      />
+                      <img
+                        src={section.img}
+                        alt={section.title}
+                        className={styles.benefitImg}
+                      />
+                    </div>
+                    <div
+                      className={styles.benefitTextBlock}
+                      style={{ alignItems: "flex-end" }}
+                    >
                       <h3 className={styles.benefitTitle}>{section.title}</h3>
-                      <p className={styles.benefitDesc}>{section.desc}</p>
+                      <p
+                        className={styles.benefitDesc}
+                        style={{ textAlign: "right" }}
+                      >
+                        {section.desc}
+                      </p>
                     </div>
                   </>
                 ) : (
                   <>
-                    <div className={styles.benefitTextBlock}>
-                      <h3 className={styles.benefitTitle}>{section.title}</h3>
-                      <p className={styles.benefitDesc}>{section.desc}</p>
+                    <div className={styles.assetContainer}>
+                      <img
+                        src={
+                          idx + 1 === 1
+                            ? "/images/benifits/scroll/white1.png"
+                            : idx + 1 === 3
+                            ? "/images/benifits/scroll/black3.png"
+                            : "/images/benifits/scroll/white4.png"
+                        }
+                        alt={section.title}
+                        className={styles.scrollBar}
+                      />
+                      <div
+                        className={styles.benefitTextBlock}
+                        style={{ alignItems: "flex-start" }}
+                      >
+                        <h3 className={styles.benefitTitle}>{section.title}</h3>
+                        <p className={styles.benefitDesc}>{section.desc}</p>
+                      </div>
                     </div>
                     <img
                       src={section.img}
@@ -106,6 +213,9 @@ const BenefitsSection = () => {
         })}
       </div>
       <div className={styles.emptyContainer} />
+      <div className={styles.emptyContainer1} />
+      <div className={styles.emptyContainer2} />
+      <div className={styles.emptyContainer3} />
     </section>
   );
 };

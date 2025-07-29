@@ -5,6 +5,14 @@ import styles from "./header.module.css";
 
 export default function HeaderComponent() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const scrollToWhatsNew = () => {
+    const whatsNewSection = document.querySelector('[data-section="whats-new"]');
+    if (whatsNewSection) {
+      whatsNewSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <header className={`${styles.nav_component_container}`}>
@@ -48,7 +56,7 @@ export default function HeaderComponent() {
             >
               <a href="/blog">Blog</a>
               <a href="#">#TheRightIntakeWay</a>
-              <a href="#">Upcoming Features</a>
+              <a href="#"onClick={scrollToWhatsNew}>Upcoming Features</a>
             </div>
             <StoreButtonsComponent
               className={`${styles.nav_component_stores} ${

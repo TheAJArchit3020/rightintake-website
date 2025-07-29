@@ -1,5 +1,6 @@
 .footer_container {
   padding-top: 2rem;
+  background: radial-gradient(circle at 20% 80%, #d6fbe8 0%, #eafcf4 40%, #f9fefa 100%);
 }
 .footer_container p {
   margin: 0;

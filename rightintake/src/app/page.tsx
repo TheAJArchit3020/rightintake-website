@@ -2,6 +2,7 @@ import MainSection from "@/components/home/MainSection/MainSection";
 import styles from "./page.module.css";
 import HeaderComponent from "@/components/header/header";
 import BeniftisSection from "@/components/home/FeatureSection/BeniftsSection";
+import WhatsNewSection from "@/components/home/WhatsNewSection/WhatsNewSection";
 import ReviewSection from "@/components/home/ReviewSection/ReviewSection";
 import Footer from "@/components/footer/footer";
 import PinnedBlogsSection from "@/components/home/PinnedBlogSection/PinnedBlogSection";
@@ -31,6 +32,8 @@ export default async function Home() {
           <BeniftisSection />
         </div>
       </div>
+      <WhatsNewSection />
+      <ReviewSection />
       <CTASection />
       <Footer />
     </div>
