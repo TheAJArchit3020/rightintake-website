@@ -22,18 +22,6 @@ const WhatsNewSection = () => {
           </p>
         </div>
       </div>
-      <div className={styles.whatsNewImages}>
-        <img
-          src="images/whatsNew/hc.jpg"
-          alt="Health Connect"
-          className={styles.sideImage}
-        />
-        <img
-          src="images/whatsNew/healthkit.png"
-          alt="HealthKit"
-          className={styles.sideImage}
-        />
-      </div>
     </section>
   );
 };

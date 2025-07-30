@@ -67,6 +67,18 @@
   box-sizing: border-box;
 }
 
+.benifitContainerEven {
+  display: flex;
+  width: 90%;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  border-radius: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 .assetContainer {
   display: flex;
   flex-direction: row;
@@ -119,3 +131,4 @@
   position: relative;
   height: 100vh;
 }
+

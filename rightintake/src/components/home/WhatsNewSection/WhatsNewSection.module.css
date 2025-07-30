@@ -74,27 +74,18 @@
 }
 
 .sideImage {
-  width: 150px;
-  height: 150px;
+  width: 30%;
+  height: 30%;
   object-fit: contain;
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-@media (max-width: 768px) {
-  .whatsNewSection {
-    height: 250px;
-  }
-  .whatsNewBox {
-    left: 16px;
-    padding: 18px 10px;
-    max-width: 90vw;
-  }
-  .whatsNewTitle {
-    font-size: 1.3rem;
-  }
-  .whatsNewDesc {
-    font-size: 0.95rem;
+@media (max-width : 768px) {
+  .whatsNewImages {
+    display: flex;
+    flex-direction: column;
+    
   }
 }
